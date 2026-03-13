@@ -5,15 +5,15 @@ import logging
 import sys
 import io
 from telebot import types
+import os
 
 # UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 logging.basicConfig(level=logging.INFO)
 
-BOT_TOKEN = "8502250386:AAFZPwsCG2z2DAJl6CnCkYt-qNAllxDg6jE"
-GROQ_API_KEY = "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"
-
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 # القنوات - اتركها فارغة [] لتعطيل الاشتراك الإجباري
 CHANNELS = [
     "@namozagk",           # القناة الأولى
@@ -22,8 +22,7 @@ CHANNELS = [
 ]
 
 bot = telebot.TeleBot(BOT_TOKEN)
-client = Groq(api_key=GROQ_API_KEY)
-
+client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 user_memory = {}
 last_message_time = {}
 
@@ -179,3 +178,4 @@ def chat(message):
 
 print("🚀 بوت الاشتراك الإجباري جاهز!")
 bot.infinity_polling()
+
