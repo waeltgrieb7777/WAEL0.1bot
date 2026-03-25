@@ -18,7 +18,7 @@ GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 # القنوات - اتركها فارغة [] لتعطيل الاشتراك الإجباري
 CHANNELS = [
-    "@namozagk",
+    "",
 ]
 
 bot = telebot.TeleBot(BOT_TOKEN)
